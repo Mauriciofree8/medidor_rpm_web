@@ -1,0 +1,685 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Cuaderno medidor RPM</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1bd20d0b-8eab-80eb-8b0b-e83501424e05" class="page serif"><header><img class="page-cover-image" src="1000325683.jpg" style="object-position:center 50%"/><h1 class="page-title">Cuaderno medidor RPM</h1><p class="page-description"></p></header><div class="page-body"><p id="1c320d0b-8eab-806b-aaea-defe35ea6f68" class="block-color-purple">Mauricio De La Hoz Figueroa </p><h3 id="1bd20d0b-8eab-8009-8dec-c35c5880b067" class="">1. <strong>Contexto del Proyecto</strong></h3><ul id="1bd20d0b-8eab-8048-8235-e4dc59c80187" class="bulleted-list"><li style="list-style-type:disc"><strong>Nombre del proyecto:</strong> Implementación de un medidor de RPM para el vehículo EPICS Uninorte</li></ul><ul id="1bd20d0b-8eab-8058-acdf-d17775fd8473" class="bulleted-list"><li style="list-style-type:disc"><strong>Equipo de trabajo:</strong> TuMaquinaPaDespues</li></ul><ul id="1bd20d0b-8eab-80dd-9604-f03cf2409b9b" class="bulleted-list"><li style="list-style-type:disc"><strong>Integrantes:</strong> Rafael Dede, Mauricio De La Hoz, Luis Toro, Adrián Góngora</li></ul><ul id="1bd20d0b-8eab-806c-bba7-f37789b5e9d5" class="bulleted-list"><li style="list-style-type:disc"><strong>Curso:</strong> Electrónica III – Diseño Analógico y Mixto</li></ul><ul id="1bd20d0b-8eab-8040-821f-e4be0268875b" class="bulleted-list"><li style="list-style-type:disc"><strong>Cliente:</strong> Proyecto EPICS, Universidad del Norte</li></ul><h3 id="1bd20d0b-8eab-80ec-8917-f6242ee14a27" class="">2. <strong>Definición del Problema</strong></h3><ul id="1bd20d0b-8eab-80ba-a312-e1b4666aefa8" class="bulleted-list"><li style="list-style-type:disc"><strong>Situación actual:</strong> No existe un sistema de medición de RPM en el vehículo, lo cual compromete el control de velocidad y la seguridad.</li></ul><ul id="1bd20d0b-8eab-8032-9233-da4f097044b3" class="bulleted-list"><li style="list-style-type:disc"><strong>Consecuencia:</strong> Riesgo de daño estructural por exceso de revoluciones.</li></ul><ul id="1bd20d0b-8eab-80a5-98b2-d90b3085162d" class="bulleted-list"><li style="list-style-type:disc"><strong>Necesidad:</strong> Sistema compacto, visible a 1.5m en condiciones de alta luz, resistente a humedad, vibración y polvo. Alimentación: 5V, 12V o 24V.</li></ul><h3 id="1bd20d0b-8eab-80a3-832a-cdebdf22ae18" class="">3. <strong>Objetivos</strong></h3><ul id="1bd20d0b-8eab-808d-ac3e-d356c7ddf9fb" class="bulleted-list"><li style="list-style-type:disc"><strong>General:</strong> Diseñar e implementar un sistema de medición de RPM usando amplificadores operacionales.</li></ul><ul id="1bd20d0b-8eab-80ba-9871-faea005394e2" class="bulleted-list"><li style="list-style-type:disc"><strong>Específicos:</strong><ul id="1bd20d0b-8eab-8036-bb16-f5f2a3a74329" class="bulleted-list"><li style="list-style-type:circle">Evaluar métodos de medición (sensor óptico, magnético, etc.).</li></ul><ul id="1bd20d0b-8eab-80ba-ad31-febe8af811f1" class="bulleted-list"><li style="list-style-type:circle">Diseñar y simular un circuito con amplificador operacional.</li></ul><ul id="1bd20d0b-8eab-8051-a4c3-f702195588d0" class="bulleted-list"><li style="list-style-type:circle">Implementar el sistema de visualización (display 7 segmentos).</li></ul><ul id="1bd20d0b-8eab-80fe-b2a9-f5e5dd4fcb28" class="bulleted-list"><li style="list-style-type:circle">Integrar al vehículo y validar funcionamiento.</li></ul></li></ul><h3 id="1bd20d0b-8eab-8056-b099-e21ccdb783d0" class="">4. <strong>Diseño del Amplificador Operacional</strong></h3><p id="1bd20d0b-8eab-80ff-b733-c95817e57032" class="">4 Semanas (Etapa de construcción)</p><h3 id="1c020d0b-8eab-8047-8ecd-c7193592e74e" class="">4.1 Proceso de Diseño y Validación del Amplificador Operacional</h3><p id="1c020d0b-8eab-80ea-8ccb-c529474c2fbe" class="">Planificación del Diseño</p><p id="1c020d0b-8eab-80e8-98bd-fabd49fb8e9f" class="">El diseño y validación del amplificador operacional se programó para un total de <strong>cuatro semanas</strong>, abordando de forma progresiva la simulación, prototipado y pruebas en laboratorio:</p><h3 id="1c020d0b-8eab-8008-9cb2-c7ff496ec2e1" class="">Semana 1 – Simulación en LTSpice</h3><ul id="1c020d0b-8eab-80f2-99c7-d91223381283" class="bulleted-list"><li style="list-style-type:disc">Se diseñó un OPAMP desde cero, partiendo de topologías discretas con transistores BJT y MOSFET.</li></ul><ul id="1c020d0b-8eab-802e-a136-e3b78e169e37" class="bulleted-list"><li style="list-style-type:disc">La simulación mostraba un comportamiento ideal, con ganancia adecuada y respuesta lineal esperada.</li></ul><ul id="1c020d0b-8eab-80df-89e0-f38f95386955" class="bulleted-list"><li style="list-style-type:disc">Se probaron condiciones de entrada en el rango 5–8 V con una ganancia esperada de 2.</li></ul><hr id="1c020d0b-8eab-8054-b168-c0380108641d"/><h3 id="1c020d0b-8eab-80d1-8c0b-c9b8181cdf7c" class="">Semana 2 Y 3 – Prototipado y Pruebas por Etapas</h3><ul id="1c020d0b-8eab-8088-8c74-fd45dda89bff" class="bulleted-list"><li style="list-style-type:disc">Se realizaron pruebas independientes del <strong>par diferencial</strong> y los <strong>espejos de corriente</strong> usando:<ul id="1c020d0b-8eab-80f2-addf-ed75b27c6519" class="bulleted-list"><li style="list-style-type:circle">N-MOSFET: <strong>2N7000</strong></li></ul><ul id="1c020d0b-8eab-80fc-aee3-d4b1b153f92e" class="bulleted-list"><li style="list-style-type:circle">P-MOSFET: <strong>BS250</strong></li></ul></li></ul><div id="1c020d0b-8eab-800a-98a8-eb6daa65c219" class="column-list"><div id="1c020d0b-8eab-8042-b420-d1417b2eca45" style="width:68.75%" class="column"><ul id="1c020d0b-8eab-80c0-b2ec-e6e382577bda" class="bulleted-list"><li style="list-style-type:disc">Resultados:<ul id="1c020d0b-8eab-8085-939e-db42aa87bdcf" class="bulleted-list"><li style="list-style-type:circle">Las primeras etapas con <strong>2N7000</strong> funcionaron correctamente en protoboard.</li></ul><ul id="1c020d0b-8eab-8001-91e1-f2dbe21ecbaa" class="bulleted-list"><li style="list-style-type:circle">Al incorporar la salida tipo <em>no inversora</em> con BS250 para obtener ganancia ≈2, <strong>la señal no era amplificada</strong>.</li></ul><ul id="1c020d0b-8eab-8059-b6ba-def2c38e0b0d" class="bulleted-list"><li style="list-style-type:circle">Se sospechó de <strong>problemas relacionados con la protoboard</strong>, específicamente capacitancias parásitas o contactos no confiables, además de posibles conflictos en la polarización del PMOS.</li></ul></li></ul></div><div id="1c020d0b-8eab-8096-a655-f5d63a0b41af" style="width:31.250000000000007%" class="column"><figure id="1c020d0b-8eab-801f-b52d-c1eb73c2f146" class="image"><a href="Salida_mosfet.jpg"><img style="width:2px" src="Salida_mosfet.jpg"/></a></figure><figure id="1c020d0b-8eab-8051-ae71-d827adc6d3b6" class="image"><a href="PRUEBA_1.jpg"><img style="width:2px" src="PRUEBA_1.jpg"/></a></figure></div></div><figure id="1c020d0b-8eab-80d0-ae85-fd56eaf6d2a2" class="image"><a href="Imagen_de_WhatsApp_2025-03-10_a_las_11.58.53_9757755a.jpg"><img style="width:432px" src="Imagen_de_WhatsApp_2025-03-10_a_las_11.58.53_9757755a.jpg"/></a></figure><hr id="1c020d0b-8eab-802c-b070-e9461c63519a"/><h3 id="1c020d0b-8eab-8007-9cf9-e01dd000da35" class="">Semana 4 – Migración a BJT y Preparación de PCB</h3><ul id="1c020d0b-8eab-8003-b901-d5fe8a2cd40e" class="bulleted-list"><li style="list-style-type:disc">Debido al bajo desempeño de la versión con MOSFET, se optó por un rediseño usando exclusivamente <strong>BJTs (2N2222 y 2N3906)</strong>.</li></ul><ul id="1c020d0b-8eab-8005-b53f-cebd4b667980" class="bulleted-list"><li style="list-style-type:disc">El objetivo es mejorar la linealidad, reducir efectos parásitos, y garantizar un mejor comportamiento en prototipado.</li></ul><ul id="1c020d0b-8eab-80b6-88c8-dc1784089cbf" class="bulleted-list"><li style="list-style-type:disc">Se comenzó el diseño del layout para <strong>implementación en PCB</strong>, evitando los errores comunes en protoboard como inductancia de pista o mal contacto.</li></ul><p id="1c020d0b-8eab-8083-a780-e3000a2f4c65" class="">
+</p><figure id="1c020d0b-8eab-802e-a382-ece3d8372584" class="image"><a href="DISEO.jpg"><img style="width:709.9750366210938px" src="DISEO.jpg"/></a></figure><hr id="1c020d0b-8eab-80e5-9227-f6de5be8e278"/><h3 id="1c020d0b-8eab-8044-bf65-cc09ce9ba3f5" class="">Conclusiones Parciales</h3><ul id="1c020d0b-8eab-80d3-87ac-cf2870462359" class="bulleted-list"><li style="list-style-type:disc">El OPAMP diseñado es una etapa crítica para amplificar señales provenientes del sensor antes del procesamiento digital.</li></ul><ul id="1c020d0b-8eab-80c8-bec5-dca94a77bcb2" class="bulleted-list"><li style="list-style-type:disc">La implementación con BJT ofrece mejor confiabilidad en montaje físico.</li></ul><ul id="1c020d0b-8eab-80db-a194-d9fad8c0563b" class="bulleted-list"><li style="list-style-type:disc">La protoboard introduce elementos no ideales que afectaron el desempeño del diseño con MOSFETs.</li></ul><p id="1c020d0b-8eab-80f9-a6c4-eb889d84f3eb" class="">Con el fin de reducir las interferencias y efectos no deseados del protoboard, se comenzó la implementación del diseño en PCB. Se espera que con el montaje adecuado y pistas optimizadas, el circuito se comporte de forma más fiel a la simulación ideal. Esta semana será clave para verificar si el cambio a BJT y el montaje en PCB permiten obtener una amplificación adecuada de la señal de entrada, cumpliendo así con los requerimientos funcionales del sistema.</p><h3 id="1c220d0b-8eab-806b-a262-c41fb4b001fc" class="">Diseño con BJT funciona. </h3><figure id="1c220d0b-8eab-809e-adaa-ca1459a7a6ca" class="image"><a href="Imagen_de_WhatsApp_2025-03-25_a_las_19.20.45_5418802f.jpg"><img style="width:709.9874877929688px" src="Imagen_de_WhatsApp_2025-03-25_a_las_19.20.45_5418802f.jpg"/></a></figure><p id="1c220d0b-8eab-802f-9168-d123b9ebdc4e" class="">Está formado por 3 etapas</p><p id="1c220d0b-8eab-8062-bed9-fb533cd0663f" class="">En una primera etapa donde se conecta el transistor con la resistencia de 1k, es esta conectada al drain de un transistor NPN conectado como diodo. Esa configuración brinda la base para los espejos de corriente. La segunda etapa es el par diferencial, se encuentra en dos secciones: La primera de estas es la etapa roja, que corresponde a la fuente de corriente. Que consiste en un transistor cuya base y emisor se encuentran conectados a los del transistor de la etapa de referencia, Esta conexión le permite comportarse como un espejo de corriente. La fuente produce una corriente que pasa por el par diferencial, y que es necesaria para su operación. La segunda de estas es la parte morada, que es el par diferencial. En esta etapa se produce una amplificación de la diferencia entre los voltajes de base de ambos transistores NPN; de modo que al ingresar una señal por la base de uno de los transistores, esta se vea amplificada de modo no inversor en el colector del opuesto. </p><figure id="1c220d0b-8eab-808d-a655-eeed0deb5b78" class="image"><a href="Imagen_de_WhatsApp_2025-03-25_a_las_19.33.29_944b0d9e.jpg"><img style="width:710px" src="Imagen_de_WhatsApp_2025-03-25_a_las_19.33.29_944b0d9e.jpg"/></a></figure><p id="1c220d0b-8eab-8093-8b4e-d6268f35a26e" class="">Básicamente si entra una señal pequeña de un lado, sale amplificada del opuesto.</p><figure id="1c220d0b-8eab-807b-9ca2-e9c6ecfb1d19" class="image"><a href="Imagen_de_WhatsApp_2025-03-25_a_las_19.35.18_6c3ac0fc.jpg"><img style="width:709.9874877929688px" src="Imagen_de_WhatsApp_2025-03-25_a_las_19.35.18_6c3ac0fc.jpg"/></a></figure><p id="1c220d0b-8eab-80e7-a91f-cbaa8030f23b" class="">También se amplifica en el colector del mismo transistor por el que entró, pero en ese caso esa amplificación será de modo inversor.  En esta etapa también se presentan transistores PNP, pero estos solo cumplen el rol de carga activa. La razón de usar cargas activas en vez de cargas pasivas es porque este circuito tiene un propósito educativo y permite ilustrar como los amplificadores hechos por fotolitografia usan cargas activas al requerir menor espacio en la oblea de silicio</p><figure id="1c220d0b-8eab-8035-8b27-f961c4d47ede" class="image"><a href="Sin_ttulo.jpg"><img style="width:709.9833374023438px" src="Sin_ttulo.jpg"/></a></figure><p id="1c220d0b-8eab-8015-b770-ea0a6dcf4114" class="">Tercera etapa, esta etapa brinda una amplificación adicional a la provista por el par diferencial a partir de un transistor PNP. Sin embargo es necesario considerar que una configuración de emisor común presenta una inversión en la señal de salida respecto a la entrada. Debido a esto la entrada no inversora del amplificador operacional corresponde a la base del transistor conectado al PNP de la etapa de emisor común. </p><figure id="1c220d0b-8eab-8081-9851-dd05946c66ab" class="image"><a href="Sin_ttulo%201.jpg"><img style="width:710px" src="Sin_ttulo%201.jpg"/></a></figure><p id="1c220d0b-8eab-8038-912a-e81f9b87ed19" class="">En nuestro caso la entrada inversora es la del transistor a dónde apunta la flecha roja, y  la no inversora a dónde apunta la flecha azul. </p><p id="1c220d0b-8eab-8065-9a19-f455fc28aa9a" class="">Ese capacitor es el capacitor de compensación, el cual mejora la respuesta del amplificador y reduce el ruido que pueda aparecer en su salida de alta frecuencia en su salida al reducir su ancho de banda de lazo abierto. </p><p id="1c220d0b-8eab-8008-8290-ebe7c9bde390" class="">Las resistencias como un elemento externo al amplificador operacional, pero usado en este configuración, se encuentra una retroalimentación. En este caso esta retroalimentación proporciona una ganancia de 2 v/v a la señal de entrada del sistema.</p><h1 id="1c020d0b-8eab-80e4-98ff-feb9a18f1c77" class="">Etapa de diseño de PCB</h1><p id="1c220d0b-8eab-80be-ab34-c40fde1e8786" class=""><strong>Etapa de diseño e impresión</strong></p><p id="1c220d0b-8eab-80ba-b217-eb9e5f7426d7" class="">Con el objetivo de garantizar la estabilidad eléctrica y mejorar la respuesta del sistema frente a condiciones no ideales (ruido, capacitancias parásitas de protoboard, caídas de tensión), se decidió migrar el amplificador operacional discreto a una (PCB) con BJT.</p><p id="1c220d0b-8eab-806f-a67d-f688677be56a" class=""><strong>Primera iteración – EasyEDA</strong></p><p id="1c220d0b-8eab-8085-a090-fdb42cda7495" class="">Inicialmente se utilizó el software EasyEDA, dada su interfaz intuitiva y velocidad de diseño. Sin embargo, durante la generación de las pistas, se detectó un problema crítico:</p><blockquote id="1c220d0b-8eab-8060-8c48-f3748cb5ec23" class="">Las pistas generadas eran demasiado delgadas y se encontraban muy próximas entre sí, lo cual hacía inviable el fresado mediante CNC, ya que el cabezal no podría separar adecuadamente los caminos de cobre sin riesgo de cortocircuito.</blockquote><p id="1c220d0b-8eab-807f-8ade-ee4bb508cdd0" class="">Esta limitación obligó al equipo a replantear la herramienta de diseño para una mejor personalización del layout.</p><p id="1c220d0b-8eab-80d9-b0d6-db0fe4a4a218" class=""><strong>Segunda iteración – KiCad</strong></p><p id="1c220d0b-8eab-80aa-888e-fd428444e367" class="">Se migró entonces el diseño a KiCad, una herramienta más robusta y profesional para diseño de PCB. Este proceso representó un reto mayor:</p><ul id="1c220d0b-8eab-8056-9ead-d69294ea091a" class="bulleted-list"><li style="list-style-type:disc">Más de 4 horas de trabajo continuo fueron necesarias para redibujar el esquemático y ajustar el ruteo de las pistas.</li></ul><ul id="1c220d0b-8eab-8010-bc98-cdb1e3303aa8" class="bulleted-list"><li style="list-style-type:disc">La complejidad del circuito, con múltiples nodos activos (entrada diferencial, espejo de corriente, etapa de salida push-pull), requería una distribución eficiente para evitar interferencias y asegurar una adecuada disipación térmica y espacial.</li></ul><p id="1c220d0b-8eab-80cc-86ff-cc32b7efb6cb" class=""><strong>Consideraciones técnicas durante el diseño</strong></p><ul id="1c220d0b-8eab-806e-b581-cfc112680a23" class="bulleted-list"><li style="list-style-type:disc">Ancho mínimo de pista ajustado para CNC (≥0.4 mm).</li></ul><ul id="1c220d0b-8eab-8026-a330-c7886ef69cd2" class="bulleted-list"><li style="list-style-type:disc">Separación mínima entre pistas de seguridad (≥0.5 mm).</li></ul><ul id="1c220d0b-8eab-8003-a9ba-f4a05debbb49" class="bulleted-list"><li style="list-style-type:disc">Uso de planos de tierra para mejorar la referencia y reducir ruido.</li></ul><ul id="1c220d0b-8eab-8071-8d4e-d40c1dda9f12" class="bulleted-list"><li style="list-style-type:disc">Identificación manual de vías críticas de corriente, especialmente en la etapa de salida (Q7–Q8).</li></ul><ul id="1c220d0b-8eab-80aa-b3c5-d7ae0bb65682" class="bulleted-list"><li style="list-style-type:disc">Revisión de todos los footprints de transistores y capacitores para asegurar compatibilidad con componentes reales disponibles.</li></ul><p id="1c220d0b-8eab-804d-9d60-c15328dd7103" class=""><strong> Dificultades encontradas</strong></p><ul id="1c220d0b-8eab-8098-b6aa-fc4f5c1ca5a4" class="bulleted-list"><li style="list-style-type:disc">El diseño del OPAMP contiene múltiples conexiones cruzadas y puntos de unión, lo cual incrementó la densidad de nodos y complejidad del layout.</li></ul><ul id="1c220d0b-8eab-80af-9e16-d1a8c24a76eb" class="bulleted-list"><li style="list-style-type:disc">Se requirió especial atención al orden de conexión de las etapas para mantener coherencia con el flujo de señal desde entrada hasta la salida.</li></ul><p id="1c220d0b-8eab-80e5-9e64-d653375ace5c" class=""><strong>Estado actual</strong></p><ul id="1c220d0b-8eab-8067-b009-e0378ede4e5f" class="bulleted-list"><li style="list-style-type:disc">El diseño se encuentra impreso y en proceso de montaje.</li></ul><ul id="1c220d0b-8eab-8020-8f1a-c359e8f47113" class="bulleted-list"><li style="list-style-type:disc">Se espera que con esta implementación se eliminen los errores de señal que se presentaban en protoboard, principalmente por contactos inconsistentes y capacitancias parásitas.<figure id="1c220d0b-8eab-8085-ae7f-c98dd704f3e8" class="image" style="text-align:center"><a href="7e188bab-80fe-4589-a37f-c06dfe2bd47a.png"><img style="width:192px" src="7e188bab-80fe-4589-a37f-c06dfe2bd47a.png"/></a></figure></li></ul><p id="1c220d0b-8eab-8075-8a20-fef985f2c6f1" class=""><strong>Lecciones aprendidas</strong></p><ul id="1c220d0b-8eab-80ac-9a9c-dc2bfeeaf151" class="bulleted-list"><li style="list-style-type:disc">La elección del software de diseño impacta directamente en la viabilidad del prototipado físico.</li></ul><ul id="1c220d0b-8eab-803f-8124-cba37a35242e" class="bulleted-list"><li style="list-style-type:disc">El uso de herramientas como KiCad, aunque más exigente, permite mayor control y calidad sobre el diseño final.</li></ul><ul id="1c220d0b-8eab-8085-9aed-ee1ba759846f" class="bulleted-list"><li style="list-style-type:disc">El paso de simulación a implementación física debe considerar no solo el comportamiento eléctrico sino también las limitaciones del proceso de fabricación.</li></ul><h3 id="1c020d0b-8eab-802a-8b7e-ccaa1f760f68" class="">Referencias</h3><p id="1c020d0b-8eab-8008-a1c6-eee2b17d0c87" class=""><a href="https://www.hackster.io/mircemk/arduino-tachometer-rpm-meter-with-ir-sensor-module-39cbd9">https://www.hackster.io/mircemk/arduino-tachometer-rpm-meter-with-ir-sensor-module-39cbd9</a> </p><p id="1c020d0b-8eab-80bf-b2fc-d1c17e73590c" class=""><a href="https://ieeexplore-ieee-org.ezproxy.uninorte.edu.co/document/10784361">https://ieeexplore-ieee-org.ezproxy.uninorte.edu.co/document/10784361</a></p><p id="1c020d0b-8eab-80e2-a206-dd449fe9944f" class=""><a href="https://www.diva-portal.org/smash/get/diva2:940243/FULLTEXT01.pdf">https://www.diva-portal.org/smash/get/diva2:940243/FULLTEXT01.pdf</a></p><p id="1c020d0b-8eab-8038-9f21-d09d59792308" class=""><a href="https://www.studocu.com/co/document/universidad-de-caldas/electronica-digital/proyecto-indicador-de-velocidad-distancia-y-rpm/4941607">https://www.studocu.com/co/document/universidad-de-caldas/electronica-digital/proyecto-indicador-de-velocidad-distancia-y-rpm/4941607</a></p><p id="1c020d0b-8eab-8023-9d9f-f38799bc7075" class="">proyecto link <br/><br/>video 2<br/></p><p id="1c020d0b-8eab-80fd-90d0-f0135adf4d0f" class=""><a href="https://www.youtube.com/watch?v=HO-gNhNlTWo">https://www.youtube.com/watch?v=HO-gNhNlTWo</a> </p><p id="1c020d0b-8eab-80ff-8d3c-ce85362a32fa" class=""><strong>Modulo Sensor de Velocidad F249 Tipo Herradura KLH-512 </strong></p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

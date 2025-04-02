@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medidor de RPM - Inicio</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .scroll-imagenes {
+      display: flex;
+      overflow-x: auto;
+      gap: 1rem;
+      margin: 2em auto;
+      padding: 1em;
+      max-width: 90%;
+    }
+    .scroll-imagenes img {
+      border-radius: 15px;
+      max-height: 300px;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="pages/sobre-nosotros.html">Sobre Nosotros</a></li>
+        <li><a href="pages/diseno-opam.html">Diseño OPAMP</a></li>
+        <li><a href="medidor-rpm.html">Medidor RPM</a></li>
+      </ul>
+    </nav>
+    <section class="hero">
+      <img src="assets/img/vehiculo.jpg" alt="Vehículo EPICS">
+      <div class="hero-text">
+        <h1>Medidor de RPM</h1>
+        <p>Implementación de un sistema de medición de revoluciones por minuto para el vehículo EPICS Uninorte</p>
+      </div>
+    </section>
+  </header>
+
+  <main class="contenido">
+    <section class="descripcion">
+      <h2>Descripción del Proyecto</h2>
+      <p class="texto">Durante el desarrollo del vehículo EPICS Uninorte se identificó la falta de un sistema de medición de revoluciones por minuto en las ruedas. Esta carencia dificultaba el control de velocidad y podía comprometer la seguridad estructural del vehículo. Por ello, se plantea como solución la implementación de un medidor de RPM que permita monitorear en tiempo real el giro de las ruedas, facilitando su supervisión y aportando a la mejora del desempeño del vehículo en escenarios demostrativos y educativos.</p>
+    </section>
+
+    <section class="objetivos">
+      <h2>¡Nuestros Objetivos!</h2>
+      <h3>Objetivo general</h3>
+      <p class="texto">Implementar un medidor de RPM para el vehículo EPICS Uninorte.</p>
+
+      <h3>Objetivos específicos</h3>
+      <ul class="texto">
+        <li>Evaluar distintos métodos para la medición y el cálculo de las revoluciones por minuto del vehículo EPICS.</li>
+        <li>Implementar un método de visualización para las medidas de RPM obtenidas.</li>
+        <li>Integrar el sistema en la estructura del vehículo.</li>
+        <li>Validar la funcionalidad del sistema propuesto.</li>
+      </ul>
+    </section>
+    <section>
+      <h2 style="text-align:center">Detalles del Vehículo</h2>
+      <div class="scroll-imagenes">
+        <img src="assets/img/imagen_1.jpg" alt="Detalle 1 del vehículo">
+        <img src="assets/img/imagen_2.jpg" alt="Detalle 2 del vehículo">
+        <img src="assets/img/imagen_3.jpg" alt="Detalle 3 del vehículo">
+      </div>
+      <blockquote style="margin-top: 1.5em; font-size: 1.2rem; max-width: 800px; margin-inline: auto;">
+        El vehículo EPICS Uninorte se empezó a desarrollar a mediados del 2022 para mostrarlo en ferias escolares, con el objetivo de promocionar el programa de Ingeniería Electrónica y de implementar mejoras prácticas en la asignatura de Electrónica III.
+      </blockquote>
+    </section>
+
+    <section class="gastos">
+      <h2>Registro de gastos</h2>
+      <table>
+        <thead>
+          <tr><th>Detalles</th><th>Cantidad</th><th>Costo total</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Impresión de circuito</td><td>1</td><td>$30.000</td></tr>
+          <tr><td>NMOS 2N7000</td><td>7</td><td>$14.000</td></tr>
+          <tr><td>PMOS BS250</td><td>4</td><td>$14.400</td></tr>
+          <tr><td>NPN 2N2222</td><td>8</td><td>$1.600</td></tr>
+          <tr><td>PNP 2N3906</td><td>3</td><td>$0</td></tr>
+          <tr><td>Capacitor</td><td>1</td><td>$0</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <p>Proyecto Electrónica III - Universidad del Norte</p>
+  </footer>
+</body>
+</html>
