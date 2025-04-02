@@ -11,22 +11,89 @@
     <ul>
       <li><a href="../index.html">Inicio</a></li>
       <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
-      <li><a href="diseno-opamp.html">Diseño OPAMP</a></li>
+      <li><a href="diseno-opam.html">Diseño OPAMP</a></li>
       <li><a href="medidor-rpm.html">Medidor RPM</a></li>
     </ul>
   </nav>
 
   <main class="contenido">
-    <h2>Diseño y Pruebas del OPAMP</h2>
-    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2em; margin-top: 2em;">
-      <img src="../assets/img/design_opamp_1.jpg" alt="Diseño OPAMP 1" style="width: 300px; border-radius: 10px;">
-      <img src="../assets/img/design_opamp_2.jpg" alt="Diseño OPAMP 2" style="width: 300px; border-radius: 10px;">
-      <img src="../assets/img/design_opamp_3.jpg" alt="Diseño OPAMP 3" style="width: 300px; border-radius: 10px;">
-    </div>
+    <h2>Diseño del Amplificador Operacional</h2>
+    <h4>4 semanas (Etapa de simulación y cintrucción)</h3>
+      <section>
+        <h3>4.1 Proceso de Diseño y Validación</h3>
+        <p>El diseño y validación del amplificador operacional se dividió en 4 semanas, incluyendo simulación, pruebas y montaje.</p>
+        <h4>Semana 1: Simulación en LTSpice</h4>
+        <ul>
+            <li>Diseño desde cero con BJT y MOSFET.</li>
+            <li>Simulación ideal: ganancia y respuesta lineal correctas.</li>
+            <li>Entrada de 5–8 V, ganancia esperada de 2.</li>
+        </ul>
+        <h4>Semana 2 y 3: Pruebas por Etapas</h4>
+        <ul>
+            <li>Pruebas por separado del par diferencial y espejos de corriente.</li>
+            <li>Componentes: 2N7000 (NMOS), BS250 (PMOS).</li>
+            <li>Problemas con BS250: señal no amplificada, posiblemente por protoboard.</li>
+        </ul>
+        <h4>Semana 4: Migración a BJT y PCB</h4>
+        <ul>
+            <li>Se rediseñó con BJT (2N2222 y 2N3906) para mejorar estabilidad y linealidad.</li>
+            <li>Diseño del layout en PCB para evitar errores de protoboard.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>5. Conclusiones Parciales</h2>
+        <ul>
+            <li>El OPAMP amplifica señales del sensor para el procesamiento digital.</li>
+            <li>BJT mejora el montaje respecto a MOSFET.</li>
+            <li>La PCB evita errores comunes en protoboard.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>6. Diseño con BJT</h2>
+        <p>El diseño consta de tres etapas. Aquí se insertan imágenes:</p>
+        <p><strong>[Aquí insertar imagen de las tres etapas del diseño]</strong></p>
+        <p>Primera etapa: espejo de corriente usando NPN como diodo.</p>
+        <p>Segunda etapa: par diferencial en dos bloques (fuente y amplificación).</p>
+        <p>Tercera etapa: PNP en configuración emisor común.</p>
+        <p><strong>[Aquí insertar imágenes explicativas de cada etapa]</strong></p>
+    </section>
+    <section>
+        <h2>7. Etapa de Diseño de PCB</h2>
+        <h3>Primera iteración – EasyEDA</h3>
+        <p>Problemas con pistas delgadas y muy cercanas. No apto para fresado CNC.</p>
+        <h3>Segunda iteración – KiCad</h3>
+        <ul>
+            <li>Rediseño completo, más de 4 horas de trabajo.</li>
+            <li>Enfoque en disipación térmica y organización de nodos.</li>
+        </ul>
+        <h3>Consideraciones Técnicas</h3>
+        <ul>
+            <li>Ancho mínimo pista: ≥0.4 mm</li>
+            <li>Separación mínima: ≥0.5 mm</li>
+            <li>Planos de tierra y control de ruido</li>
+            <li>Footprints revisados para componentes reales</li>
+        </ul>
+    </section>
+    <section>
+        <h2>8. Estado Actual</h2>
+        <ul>
+            <li>PCB impresa, en proceso de montaje.</li>
+            <li>Expectativa de mejorar comportamiento frente a la protoboard.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>9. Lecciones Aprendidas</h2>
+        <ul>
+            <li>La elección del software afecta la viabilidad del prototipo.</li>
+            <li>KiCad ofrece más control y calidad.</li>
+            <li>Del simulador a lo físico: considerar limitaciones de fabricación.</li>
+        </ul>
+    </section>
+    <section>
   </main>
 
   <footer>
-    <p>Documentación de pruebas del OPAMP</p>
+    <p>Proyecto Electrónica III - Universidad del Norte &copy; 2025</p>
   </footer>
 </body>
 </html>
